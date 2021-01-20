@@ -1,0 +1,28 @@
+
+# SCALA
+
+*.class
+*.log
+
+# Simple Build Tool
+
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+
+# TEMPORARY
+app-cef/src/universal/native/libcef.so
+app-cef/src/universal/native/natives_blob.bin
+
+.idea
+.ctags
+TAGS
+tags
+tags-dep
+.DS_Store
