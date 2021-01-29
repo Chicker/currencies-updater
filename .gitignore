@@ -26,3 +26,6 @@ TAGS
 tags
 tags-dep
 .DS_Store
+.bloop
+.metals
+.vscode

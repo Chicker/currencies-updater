@@ -1,17 +1,29 @@
 ## About
 
-- Периодически (период задается конфигом pureconfig application.conf)
-- В базе (postgres + doobie, считается что таблица создана заранее)
-- валюты (ограниченный список валют)
-- используя данные внешнего сервиса (несколько одновременных запросов в разные сервисы с получением результата от первого ответившего и отменой всех других)
+Architecture of the code:
+- Tagless Final approach with using Cats and Tofu
 
-Точки отказа:
-- очевидно база
-- очевидно внешнее API
+Which libraries are used:
 
-Методика работы с отказами: просто логгирование в stdout
+- tofu (Logging, Race)
+- cats/cats effect
+- circe (JSON encode/decode)
+- doobie (accessing to Postgres)
+- monix
+- pureconfig (loading config. params from application.conf file)
+- sttp (http client)
+- flyway (database migrations)
 
-Graceful shutdown:
- - сервис может получить в любой момент сигнал о завершении работы. Сервис должен корректно завершить текущее действие (например, обработать текущий запрос и перестать принимать новые).
+## Database
 
-Для удоства тестирования должны быть абстрагированы работа с базой и внешним API.
+```
+docker run \
+    --name currencies \
+    --memory="256m" \
+    -p 5500:5432 \
+    -e POSTGRES_PASSWORD=postgres \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_DB=currencies \
+    -d \
+    postgres:11.10
+```
