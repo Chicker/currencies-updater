@@ -1,6 +1,6 @@
 ## About
 
-Architecture of the code:
+The architecture of the code:
 - Tagless Final approach with using Cats and Tofu
 
 Which libraries are used:

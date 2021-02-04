@@ -44,6 +44,7 @@ lazy val `currencies-updater` = (project in file("currencies-updater"))
       scalaTest % Test
     )
   )
+  .enablePlugins(JavaAppPackaging)
   .dependsOn(`http-client`)
   .dependsOn(`tofu-ext`)
 
